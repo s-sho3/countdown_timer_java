@@ -1,5 +1,6 @@
 package countdown_timer;
 
+import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.*;
@@ -8,6 +9,7 @@ public class View extends JFrame{
 	private static final long serialVersionUID = 950073717377966425L;
 	private final int width = 150;
 	private final int height = 50;
+	private Controller controller = null;
 	private Model model = null;
 	//private JComboBox<String> countDownTimeBox = null;
 	private JLabel nowTime = new JLabel("0");
@@ -15,7 +17,7 @@ public class View extends JFrame{
 
 	public View(){
 		setupWindow();
-		
+
 		model = new Model(this);
 		//new Controller(this, model);
 		
@@ -24,7 +26,7 @@ public class View extends JFrame{
 		countDownTimeBox = new JComboBox<String>(countDownTime);
 		*/
 	
-		Controller controller = new Controller(this, model);
+		controller = new Controller(this, model);
 		//controller.add(countDownTimeBox);
 		controller.add(nowTime);
 		controller.add(nextTime);
@@ -58,6 +60,10 @@ public class View extends JFrame{
 	public String getNextTime(){
 		return nextTime.getText();
 	}
+	public void toggleColor(){
+		controller.toggleColor();
+	}
+
 	public static void main(String[] args) {
 		View view = new View();
 		view.setVisible(true);

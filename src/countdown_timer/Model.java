@@ -32,17 +32,20 @@ public class Model {
 	}
 	
 	public void start() {
-		System.out.println("aa");
 		if(timerThread != null) return; //do nothing in running. prevent from multiple requests in very short time.
 		this.timerThread = new Thread() {
 			@Override
 			public void run() {
 				try {
-					while (time > 0){
+					while (true){
 						Thread.sleep(1000);
-						countDown();
+						if(time > 0){
+							countDown();
+						}else if(time == 0){							
+							timeUp();
+							view.toggleColor();
+						}
 					}
-					timeUp();
 				}catch(InterruptedException e){
 				}
 			}

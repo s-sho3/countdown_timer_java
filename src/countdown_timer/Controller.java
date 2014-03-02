@@ -1,5 +1,6 @@
 package countdown_timer;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -85,5 +86,14 @@ public class Controller extends JPanel implements MouseListener{
 	}
 	private Model getModel(){
 		return model;
+	}
+
+	public void toggleColor(){
+		if(getBackground().getRGB() != new Color(219, 0, 29).getRGB()){
+			setBackground(new Color(219, 0, 29));
+		}else{
+			Color color = new Color(50 , 0, 110);
+			setBackground(color);			
+		}
 	}
 }
