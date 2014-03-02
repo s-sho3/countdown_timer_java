@@ -81,6 +81,7 @@ public class Controller extends JPanel implements MouseListener{
 		getModel().stopTimer();
 	}
 	private void reset(){
+		setBackground(new Color(0xEE, 0xEE, 0xEE));
 		started = true;
 		model.resetTimer();
 	}
@@ -89,6 +90,7 @@ public class Controller extends JPanel implements MouseListener{
 	}
 
 	public void toggleColor(){
+		System.out.println(getBackground());
 		if(getBackground().getRGB() != new Color(219, 0, 29).getRGB()){
 			setBackground(new Color(219, 0, 29));
 		}else{
