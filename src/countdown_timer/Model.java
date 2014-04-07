@@ -32,6 +32,7 @@ public class Model {
 	}
 	
 	public void start() {
+		view.setEditableNextTime(false);
 		if(timerThread != null) return; //do nothing in running. prevent from multiple requests in very short time.
 		this.timerThread = new Thread() {
 			@Override
@@ -60,6 +61,7 @@ public class Model {
 	
 	private void timeUp(){
 		view.setTime("END");
+		view.setEditableNextTime(true);
 	}
 	
 	public void resetTimer(){
@@ -74,6 +76,7 @@ public class Model {
 	public void stopTimer(){
 		if(timerThread != null) timerThread.interrupt();
 		timerThread = null;
+		view.setEditableNextTime(true);
 	}
 	
 	public void setTime(int time){

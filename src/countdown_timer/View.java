@@ -7,8 +7,8 @@ import javax.swing.*;
 
 public class View extends JFrame{
 	private static final long serialVersionUID = 950073717377966425L;
-	private final int width = 150;
-	private final int height = 50;
+	private final int width = 125;
+	private final int height = 75;
 	private Controller controller = null;
 	private Model model = null;
 	//private JComboBox<String> countDownTimeBox = null;
@@ -35,21 +35,28 @@ public class View extends JFrame{
 	
 	private void setupWindow(){
 		//String version = "V0.0";
-		//setTitle("gui_timer "+version);
+		setTitle("timer");
+		setIconImage(new ImageIcon("./Icon.png").getImage());
+		//setIconImage(new ImageIcon(getClass().getClassLoader().getResource("/countdown_timer/Icon.png")).getImage());
+		//Applicatio app = Application.getApplication();
+		//app.setDockIconImage(img);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(width, height);
 		setAlwaysOnTop(true);
 		//setLayout(new GridLayout(2, 1));
-		setMinimumSize(new Dimension(150, 50));
+		setMinimumSize(new Dimension(125, 75));
 		setMaximumSize(new Dimension(250, 200));
 	}
 	public void setTime(int time){
 		String min = Integer.toString(time/60);
-		String sec = Integer.toString(time%60);
+		String sec = String.format("%02d", time%60);
 		nowTime.setText(min+":"+sec);
 	}
 	public void setTime(String message){
 		nowTime.setText(message);
+	}
+	public void setEditableNextTime(boolean editable){
+		nextTime.setEditable(editable);
 	}
 	/*
 	public int getTimeSec(){
